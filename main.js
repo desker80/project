@@ -1,6 +1,29 @@
 
 const drawButton = document.getElementById('draw-button');
 const numbersContainer = document.querySelector('.numbers');
+const themeToggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Function to set the theme
+const setTheme = (theme) => {
+    body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeToggleButton.textContent = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+};
+
+// Toggle theme on button click
+themeToggleButton.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
+// Load saved theme from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+});
+
 
 drawButton.addEventListener('click', () => {
     const numbers = new Set();

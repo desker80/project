@@ -1,18 +1,42 @@
 
+:root {
+    --background-color: #f0f0f0;
+    --lotto-machine-background: white;
+    --text-color: #000000;
+    --number-background: #f0f0f0;
+    --button-background: #4CAF50;
+    --button-text: white;
+    --button-hover: #45a049;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme='dark'] {
+    --background-color: #121212;
+    --lotto-machine-background: #1e1e1e;
+    --text-color: #ffffff;
+    --number-background: #333333;
+    --button-background: #5a5a5a;
+    --button-text: #ffffff;
+    --button-hover: #6a6a6a;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
 body {
-    background-color: #f0f0f0;
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .lotto-machine {
-    background-color: white;
+    background-color: var(--lotto-machine-background);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow-color);
     text-align: center;
 }
 
@@ -25,7 +49,7 @@ body {
 .number {
     width: 50px;
     height: 50px;
-    background-color: #f0f0f0;
+    background-color: var(--number-background);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -36,8 +60,8 @@ body {
 }
 
 #draw-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--button-background);
+    color: var(--button-text);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -46,5 +70,17 @@ body {
 }
 
 #draw-button:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    cursor: pointer;
 }
