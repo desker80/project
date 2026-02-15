@@ -8,7 +8,7 @@ const body = document.body;
 const setTheme = (theme) => {
     body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    themeToggleButton.textContent = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    themeToggleButton.textContent = theme === 'dark' ? '라이트 모드로 변경' : '다크 모드로 변경';
 };
 
 // Toggle theme on button click
