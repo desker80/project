@@ -1,47 +1,108 @@
 
 :root {
-    --background-color: #f0f0f0;
-    --lotto-machine-background: white;
-    --text-color: #000000;
-    --number-background: #f0f0f0;
-    --button-background: #4CAF50;
-    --button-text: white;
-    --button-hover: #45a049;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --background-color: #f4f6f9;
+    --lotto-machine-background: #ffffff;
+    --text-color: #212529;
+    --number-background: #e9ecef;
+    --button-background: #007bff;
+    --button-text: #ffffff;
+    --button-hover: #0056b3;
+    --shadow-color: rgba(0, 0, 0, 0.075);
+    --header-background: #ffffff;
+    --header-shadow: rgba(0, 0, 0, 0.05);
+    --link-color: #007bff;
 }
 
 body[data-theme='dark'] {
     --background-color: #121212;
     --lotto-machine-background: #1e1e1e;
-    --text-color: #ffffff;
-    --number-background: #333333;
-    --button-background: #5a5a5a;
-    --button-text: #ffffff;
-    --button-hover: #6a6a6a;
-    --shadow-color: rgba(255, 255, 255, 0.1);
+    --text-color: #e9ecef;
+    --number-background: #343a40;
+    --button-background: #343a40;
+    --button-hover: #495057;
+    --shadow-color: rgba(255, 255, 255, 0.05);
+    --header-background: #1e1e1e;
+    --header-shadow: rgba(255, 255, 255, 0.05);
+    --link-color: #80bfff;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
-    font-family: sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding-top: 70px; /* Space for fixed header */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
+    width: 100%;
     box-sizing: border-box;
+}
+
+.site-header {
+    width: 100%;
+    background-color: var(--header-background);
+    box-shadow: 0 2px 4px var(--header-shadow);
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 960px;
+    height: 70px;
+}
+
+.site-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.site-header nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+.intro-text, .page-content {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.page-content {
+    text-align: left;
 }
 
 .lotto-machine {
     background-color: var(--lotto-machine-background);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--shadow-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
     text-align: center;
-    margin-bottom: 20px; /* Add space below lotto machine */
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 500px;
 }
 
 .numbers {
@@ -66,11 +127,12 @@ body {
 #draw-button {
     background-color: var(--button-background);
     color: var(--button-text);
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #draw-button:hover {
@@ -78,18 +140,18 @@ body {
 }
 
 #theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 8px 12px;
-    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    border-radius: 8px;
     border: none;
     background-color: var(--button-background);
     color: var(--button-text);
     cursor: pointer;
+    z-index: 1000;
 }
 
-/* Updated for bottom-right positioning */
 .contact-form-container {
     position: fixed;
     bottom: 20px;
@@ -97,15 +159,9 @@ body {
     background-color: var(--lotto-machine-background);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px var(--shadow-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
     width: 300px;
-    z-index: 1000; /* Ensure it's on top */
-}
-
-.contact-form-container h2 {
-    color: var(--text-color);
-    margin-bottom: 20px;
-    text-align: center;
+    z-index: 1000;
 }
 
 #contact-form {
@@ -114,32 +170,23 @@ body {
     gap: 10px;
 }
 
-#contact-form label {
+#contact-form label, #contact-form h2 {
     text-align: left;
     color: var(--text-color);
     font-weight: bold;
 }
 
-#contact-form input[type="text"],
-#contact-form input[type="email"],
-#contact-form textarea {
+#contact-form input, #contact-form textarea {
     padding: 10px;
     border: 1px solid var(--number-background);
     border-radius: 5px;
     background-color: var(--background-color);
     color: var(--text-color);
-    width: 100%; /* Ensure they fill the container */
+    width: 100%;
     box-sizing: border-box;
 }
 
-#contact-form input[type="text"]:focus,
-#contact-form input[type="email"]:focus,
-#contact-form textarea:focus {
-    outline: none;
-    border-color: var(--button-background);
-}
-
-#contact-form button[type="submit"] {
+#contact-form button {
     background-color: var(--button-background);
     color: var(--button-text);
     padding: 10px 20px;
@@ -150,12 +197,22 @@ body {
     margin-top: 10px;
 }
 
-#contact-form button[type="submit"]:hover {
-    background-color: var(--button-hover);
-}
-
 #disqus_thread {
     margin-top: 20px;
     width: 100%;
     max-width: 800px;
+}
+
+.site-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--lotto-machine-background);
+    color: var(--text-color);
+}
+
+.site-footer a {
+    color: var(--link-color);
+    text-decoration: none;
 }

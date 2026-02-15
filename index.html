@@ -4,52 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 추첨</title>
+    <title>로또 추첨 - 재미로 즐기는 번호 생성기</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle">테마 변경</button>
-    <div class="lotto-machine">
-        <h1>로또 추첨</h1>
-        <div class="numbers">
-            <!-- Numbers will be inserted here by JavaScript -->
+    <header class="site-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">로또 번호 생성기</a>
+            <nav>
+                <a href="index.html">홈</a>
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+            </nav>
         </div>
-        <button id="draw-button">번호 추첨</button>
-    </div>
+    </header>
 
-    <div class="contact-form-container">
-        <h2>제휴 문의</h2>
-        <form action="https://formspree.io/f/mzdarkjl" method="POST" id="contact-form">
-            <p>실제 Formspree 폼 ID로 교체해주세요.</p>
-            <label for="name">이름:</label>
-            <input type="text" id="name" name="name" required>
+    <main>
+        <div class="intro-text">
+            <h1>로또 번호, 고민하지 마세요!</h1>
+            <p>버튼 하나로 쉽고 빠르게 6개의 행운 번호를 생성해 보세요. 이 번호 생성기는 통계나 확률에 기반한 분석 도구가 아니며, 순수한 무작위 방식으로 번호를 조합하여 재미를 제공합니다. 생성된 번호는 참고용으로만 사용해 주세요.</p>
+        </div>
 
-            <label for="email">이메일:</label>
-            <input type="email" id="email" name="email" required>
+        <div class="lotto-machine">
+            <h2>로또 추첨</h2>
+            <div class="numbers">
+                <!-- Numbers will be inserted here by JavaScript -->
+            </div>
+            <button id="draw-button">번호 추첨</button>
+        </div>
 
-            <label for="message">메시지:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+        <div class="contact-form-container">
+            <h2>제휴 문의</h2>
+            <form action="https://formspree.io/f/mzdarkjl" method="POST" id="contact-form">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
 
-            <button type="submit">문의 보내기</button>
-        </form>
-    </div>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" required>
 
-    <div id="disqus_thread"></div>
+                <label for="message">메시지:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">문의 보내기</button>
+            </form>
+        </div>
+
+        <div id="disqus_thread"></div>
+    </main>
+    
+    <button id="theme-toggle">테마 변경</button>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 로또 추첨. All Rights Reserved.</p>
+        <p><a href="privacy.html">개인정보처리방침</a></p>
+    </footer>
+
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-
         var disqus_config = function () {
-        this.page.url = window.location.href;
-        this.page.identifier = 'lotto-drawing-homepage';
+            this.page.url = window.location.href;
+            this.page.identifier = 'lotto-drawing-homepage';
         };
-
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://desker80.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://desker80.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
         })();
     </script>
     <noscript>댓글을 보려면 JavaScript를 활성화하세요. <a href="https://disqus.com/?ref_noscript">Disqus에서 제공하는 댓글입니다.</a></noscript>
